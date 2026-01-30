@@ -3,7 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Lean 4](https://img.shields.io/badge/Lean-4.27.0-orange)](https://lean-lang.org/)
 
-A lightweight web framework for **Lean 4** with an Axum-inspired router, type-safe extractors, and middleware.
+A lightweight web framework for **[Lean 4](https://lean-lang.org/)** with an Axum-inspired router, type-safe extractors, and middleware.
+
+> **What is Lean 4?** [Lean](https://lean-lang.org/) is a functional programming language and theorem prover developed by Microsoft Research. It combines a powerful type system with the ability to write mathematical proofs, making it ideal for building verified, high-assurance software.
 
 ## Features
 
