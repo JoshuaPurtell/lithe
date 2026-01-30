@@ -125,6 +125,12 @@ Lithe/
 - **CSRF**: Use the `csrf` middleware for cookie-based auth.
 - **Sessions**: Set `Secure`, `HttpOnly`, `SameSite=Strict` on cookies.
 
+## Demo: Lean Crafter
+
+As a demonstration, I've built [Crafter](https://github.com/JoshuaPurtell/lean-crafter)—a 2D survival game—entirely in Lean 4 and hosted it on the web using Lithe.
+
+🎮 **[Play it live](https://lean-crafter-production.up.railway.app/)** | 📦 **[Source code](https://github.com/JoshuaPurtell/lean-crafter)**
+
 ## License
 
 MIT — see [LICENSE](LICENSE)
