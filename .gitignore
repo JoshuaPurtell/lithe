@@ -1,0 +1,30 @@
+# Lean build artifacts
+.lake/
+lake-packages/
+*.olean
+*.ilean
+*.trace
+*.hash
+
+# Rust build artifacts
+target/
+*.rlib
+*.rmeta
+
+# Editor
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# SQLite databases
+*.sqlite
+*.sqlite3
+
+# Dev notes (optional - remove if you want to include)
+todos.txt
+plan.txt

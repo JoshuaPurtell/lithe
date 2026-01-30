@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lean (elan)
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Lake build (library)
+        run: lake build
+
+      - name: Lake build + run tests
+        run: |
+          lake build lithe_tests
+          lake exe lithe_tests
+
+      - name: Cargo build (shim)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+        run: cargo build
+
+      - name: Cargo tests (hello)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+        run: cargo test
+
+      - name: Cargo tests (websocket)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+          LITHE_EXAMPLE: websocket
+        run: cargo test
+
+      - name: Cargo tests (sse)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+          LITHE_EXAMPLE: sse
+        run: cargo test
+
+      - name: Cargo tests (streaming)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+          LITHE_EXAMPLE: streaming
+        run: cargo test
+
+      - name: Cargo tests (kitchen sink)
+        working-directory: rust/lithe-shim
+        env:
+          RUSTFLAGS: "-D warnings"
+          LITHE_EXAMPLE: kitchen_sink
+        run: cargo test

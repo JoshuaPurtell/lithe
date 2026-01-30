@@ -1,0 +1,21 @@
+[package]
+name = "lithe-shim"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.6", features = ["ws"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+hyper = { version = "0.14", features = ["full"] }
+bytes = "1"
+futures-util = "0.3"
+
+[build-dependencies]
+cc = "1"
+walkdir = "2"
+
+[dev-dependencies]
+tokio-tungstenite = "0.20"
+url = "2"
