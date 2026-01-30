@@ -22,6 +22,8 @@ extern "C" {
     pub fn lithe_lean_sarray_cptr(o: *mut lean_object) -> *mut u8;
     pub fn lithe_lean_sarray_size(o: *mut lean_object) -> usize;
     pub fn lithe_lean_dec(o: *mut lean_object);
+    pub fn lithe_byte_array_size(o: *mut lean_object) -> usize;
+    pub fn lithe_byte_array_copy(o: *mut lean_object, dst: *mut u8);
 
     #[cfg(lithe_example = "hello")]
     pub fn initialize_hello_Hello(builtin: u8) -> *mut lean_object;
@@ -64,11 +66,12 @@ pub unsafe fn mk_byte_array(data: &[u8]) -> *mut lean_object {
 }
 
 pub unsafe fn byte_array_to_vec(arr: *mut lean_object) -> Vec<u8> {
-    let size = lithe_lean_sarray_size(arr);
-    let src = lithe_lean_sarray_cptr(arr);
-    let mut out = Vec::with_capacity(size);
-    out.set_len(size);
-    std::ptr::copy_nonoverlapping(src, out.as_mut_ptr(), size);
+    let size = lithe_byte_array_size(arr);
+    if size == 0 {
+        return Vec::new();
+    }
+    let mut out = vec![0u8; size];
+    lithe_byte_array_copy(arr, out.as_mut_ptr());
     out
 }
 
