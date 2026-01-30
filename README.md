@@ -1,5 +1,6 @@
 # Lithe
 
+[![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/JoshuaPurtell/lithe/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Lean 4](https://img.shields.io/badge/Lean-4.27.0-orange)](https://lean-lang.org/)
 
@@ -20,6 +21,10 @@ A lightweight web framework for **[Lean 4](https://lean-lang.org/)** with an Axu
 Add to your `lakefile.lean`:
 
 ```lean
+-- Latest stable release (recommended)
+require lithe from git "https://github.com/JoshuaPurtell/lithe" @ "v0.1.0"
+
+-- Or track main branch (latest features, may be unstable)
 require lithe from git "https://github.com/JoshuaPurtell/lithe" @ "main"
 ```
 
@@ -30,6 +35,10 @@ lake build
 ```
 
 > **Note:** Requires Lean 4.27.0+ (see `lean-toolchain`).
+
+### Versioning
+
+Lithe follows [Semantic Versioning](https://semver.org/). Pin to a specific version tag (e.g., `v0.1.0`) for stability in production.
 
 ## Quick Start
 

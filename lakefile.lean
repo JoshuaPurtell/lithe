@@ -2,7 +2,7 @@ import Lake
 open Lake DSL
 
 package lithe where
-  -- Keep defaults minimal and explicit.
+  version := v!"0.1.0"
 
 require std from git "https://github.com/leanprover/std4" @ "v4.27.0"
 require SQLite from git "https://github.com/leanprover/leansqlite" @ "main"
